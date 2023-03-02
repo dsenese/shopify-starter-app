@@ -7,7 +7,6 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config()
 
 const MONGO_URL = process.env.MONGO_URL;
-console.log('MONGO URL', MONGO_URL);
 // The transactions with Shopify will always be marked as test transactions, unless NODE_ENV is production.
 // See the ensureBilling helper to learn more about billing in this template.
 const billingConfig = {
