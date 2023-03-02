@@ -1,7 +1,6 @@
 # Environment Configuration
 .env
 .env.*
-web/.env
 
 # Dependency directory
 node_modules

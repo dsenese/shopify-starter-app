@@ -1,7 +1,6 @@
 import {
   Card,
   Page,
-  Button,
   Layout,
   TextContainer,
   Image,
@@ -14,20 +13,15 @@ import { TitleBar } from "@shopify/app-bridge-react";
 import { trophyImage } from "../assets";
 
 import { ProductsCard } from "../components";
-import { useNavigate } from 'react-router-dom';
+import {}
 
 export default function HomePage() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/landing-page');
-  }
   return (
     <Page narrowWidth>
       <TitleBar title="App name" primaryAction={null} />
       <Layout>
         <Layout.Section>
           <Card sectioned>
-            <Button onClick={handleClick}>Go to Landing Page</Button>
             <Stack
               wrap={false}
               spacing="extraTight"

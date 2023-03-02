@@ -1,7 +1,6 @@
 import {
   Card,
   Page,
-  Button,
   Layout,
   TextContainer,
   Image,
@@ -19,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 export default function HomePage() {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/landing-page');
+    navigate('/landingpage');
   }
   return (
     <Page narrowWidth>

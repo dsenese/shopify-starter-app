@@ -1,7 +1,7 @@
 import {
   Card,
   Page,
-  Button,
+  Button
   Layout,
   TextContainer,
   Image,

@@ -1,7 +1,6 @@
 import {
   Card,
   Page,
-  Button,
   Layout,
   TextContainer,
   Image,
@@ -17,17 +16,13 @@ import { ProductsCard } from "../components";
 import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/landing-page');
-  }
   return (
     <Page narrowWidth>
       <TitleBar title="App name" primaryAction={null} />
       <Layout>
         <Layout.Section>
           <Card sectioned>
-            <Button onClick={handleClick}>Go to Landing Page</Button>
+            <Button></Button>
             <Stack
               wrap={false}
               spacing="extraTight"

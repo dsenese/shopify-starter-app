@@ -1,7 +1,6 @@
 import {
   Card,
   Page,
-  Button,
   Layout,
   TextContainer,
   Image,
@@ -17,10 +16,6 @@ import { ProductsCard } from "../components";
 import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/landing-page');
-  }
   return (
     <Page narrowWidth>
       <TitleBar title="App name" primaryAction={null} />

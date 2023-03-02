@@ -1,7 +1,6 @@
 import {
   Card,
   Page,
-  Button,
   Layout,
   TextContainer,
   Image,

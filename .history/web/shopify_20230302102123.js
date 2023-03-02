@@ -3,11 +3,9 @@ import { shopifyApp } from "@shopify/shopify-app-express";
 // import { SQLiteSessionStorage } from "@shopify/shopify-app-session-storage-sqlite";
 import {MongoDBSessionStorage} from '@shopify/shopify-app-session-storage-mongodb';
 import { restResources } from "@shopify/shopify-api/rest/admin/2023-01";
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config()
 
 const MONGO_URL = process.env.MONGO_URL;
-console.log('MONGO URL', MONGO_URL);
+
 // The transactions with Shopify will always be marked as test transactions, unless NODE_ENV is production.
 // See the ensureBilling helper to learn more about billing in this template.
 const billingConfig = {
@@ -35,7 +33,7 @@ const shopify = shopifyApp({
   // This should be replaced with your preferred storage strategy
   sessionStorage: new MongoDBSessionStorage(
     MONGO_URL,
-    'shopify-mongo-test',
+    'database',
   ),
 });
 
