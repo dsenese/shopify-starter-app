@@ -1,0 +1,32 @@
+import axios from "axios";
+import { LATEST_API_VERSION } from "../constants";
+
+function getShop() {
+    const query = JSON.stringify({
+        query: `{
+        shop {
+            name
+            id
+            storefrontUrl
+            contactEmail
+            plan {
+            displayName
+            shopifyPlus
+            partnerDevelopment
+            }
+        }
+        }`,
+    });
+    console.log('GRAPHQL getShop called');
+    const response = await axios.post(`https://${shopOrigin}/admin/api/${LATEST_API_VERSION}/graphql.json`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Access-Token': accessToken,
+        },
+        body: query,
+    });
+    const responseJson = await response.json();
+    console.log('GQL GET SHOP:', responseJson);
+    res.json(responseJson);
+}

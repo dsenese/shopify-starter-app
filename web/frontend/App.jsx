@@ -24,6 +24,10 @@ export default function App() {
                   label: "Page name",
                   destination: "/pagename",
                 },
+                {
+                  label:'Landing Page',
+                  destination: '/landing-page'
+                },
               ]}
             />
             <Routes pages={pages} />

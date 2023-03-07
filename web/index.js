@@ -7,13 +7,27 @@ import serveStatic from "serve-static";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import GDPRWebhookHandlers from "./gdpr.js";
+import graphqlRouter from "./graphql.js";
+import mongoose from "mongoose";
+import * as dotenv from 'dotenv';
+dotenv.config()
 
+const MONGO_URL = process.env.MONGO_URL;
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 
 const STATIC_PATH =
   process.env.NODE_ENV === "production"
     ? `${process.cwd()}/frontend/dist`
     : `${process.cwd()}/frontend/`;
+
+    // connects our back end code with the database
+mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => {
+  console.log("Connected to Database");
+})
+.catch((err) => {
+  console.log("Not Connected to Database ERROR! ", err);
+});
 
 const app = express();
 
@@ -31,7 +45,6 @@ app.post(
 
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());
-
 app.use(express.json());
 
 app.get("/api/products/count", async (_req, res) => {
@@ -53,6 +66,14 @@ app.get("/api/products/create", async (_req, res) => {
     error = e.message;
   }
   res.status(status).send({ success: status === 200, error });
+});
+
+app.get('/api/shop/getShop', async (_req, res) => {
+  const shop = await shopify.api.rest.Shop.all({
+    session: res.locals.shopify.session,
+  })
+  console.log('getShop called', shop);
+  res.status(200).send(shop);
 });
 
 app.use(serveStatic(STATIC_PATH, { index: false }));

@@ -13,13 +13,41 @@ import { TitleBar } from "@shopify/app-bridge-react";
 
 import { trophyImage } from "../assets";
 
+import { useAppQuery, useAuthenticatedFetch } from "../hooks";
+
 import { ProductsCard } from "../components";
 import { useNavigate } from 'react-router-dom';
+// import {axios} from 'axios';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const fetch = useAuthenticatedFetch();
+
   const handleClick = () => {
     navigate('/landing-page');
+  }
+  // const getShop = async () => {
+  //   const {
+  //     data,
+  //     refetch: refetchProductCount,
+  //     isLoading: isLoadingCount,
+  //     isRefetching: isRefetchingCount,
+  //   } = useAppQuery({
+  //     url: "/api/products/count",
+  //     reactQueryOptions: {
+  //       onSuccess: () => {
+  //         setIsLoading(false);
+  //       },
+  //     },
+  //   })
+  // }
+  const getShop = async () => {
+    const response = await fetch("/api/shop/getShop");
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      
+    }
   }
   return (
     <Page narrowWidth>
@@ -28,6 +56,7 @@ export default function HomePage() {
         <Layout.Section>
           <Card sectioned>
             <Button onClick={handleClick}>Go to Landing Page</Button>
+            <Button onClick={getShop}>Get Shop</Button>
             <Stack
               wrap={false}
               spacing="extraTight"

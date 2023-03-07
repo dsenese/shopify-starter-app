@@ -1,9 +1,8 @@
 import { BillingInterval, LATEST_API_VERSION } from "@shopify/shopify-api";
 import { shopifyApp } from "@shopify/shopify-app-express";
-// import { SQLiteSessionStorage } from "@shopify/shopify-app-session-storage-sqlite";
 import {MongoDBSessionStorage} from '@shopify/shopify-app-session-storage-mongodb';
 import { restResources } from "@shopify/shopify-api/rest/admin/2023-01";
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv';
 dotenv.config()
 
 const MONGO_URL = process.env.MONGO_URL;
